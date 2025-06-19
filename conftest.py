@@ -1,15 +1,7 @@
 import pytest
 import requests
-import random
-import string
-
-BASE_URL = "https://stellarburgers.nomoreparties.site"
-
-def random_email():
-    return "user_" + "".join(random.choices(string.ascii_lowercase + string.digits, k=8)) + "@mail.ru"
-
-def random_name():
-    return "User" + "".join(random.choices(string.ascii_letters, k=5))
+from data.urls import BASE_URL
+from data.helpers import random_email, random_name
 
 @pytest.fixture
 def new_user():
@@ -32,7 +24,6 @@ def register_user(new_user):
     }
     user_info = {"email": new_user["email"], "password": new_user["password"]}
     yield {**tokens, **user_info}
-    # Удаляем пользователя после теста
     headers = {"Authorization": tokens["access"]}
     requests.delete(f"{BASE_URL}/api/auth/user", headers=headers)
 
