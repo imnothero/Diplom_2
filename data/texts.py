@@ -1,0 +1,5 @@
+MSG_USER_EXISTS = "User already exists"
+MSG_MISSING_FIELD = "Email, password and name are required fields"
+MSG_INVALID_CREDENTIALS = "email or password are incorrect"
+MSG_MUST_BE_AUTH = "You should be authorised"
+MSG_NO_INGREDIENTS = "Ingredient ids must be provided"
